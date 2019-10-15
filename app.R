@@ -47,11 +47,13 @@ server <- function(input, output) {
 
     output$xpPlot <- renderPlot({
         
+        req(input$the_xp)
+        
         my_xp <- if_else(input$the_xp > max(levels$Cumulative),
                          max(levels$Cumulative),
                          input$the_xp)
         
-        if(my_xp <1 ) {
+        if(my_xp < 1) {
             return(NULL)
         }
         
