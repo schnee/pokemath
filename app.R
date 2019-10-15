@@ -67,6 +67,12 @@ server <- function(input, output) {
             my_level, my_xp, "You are here"
         )
         
+        my_labels_df <- tribble(
+            ~x, ~y, ~label,
+            0, my_level, my_level,
+            my_xp, 0, my_xp
+        )
+        
         my_step_df <- tribble(
             ~Level, ~XP, ~label,
             5,my_xp / 2, 1,
@@ -92,9 +98,10 @@ server <- function(input, output) {
                              nudge_x = my_nudge_x, 
                              nudge_y = my_nudge_y)+
             geom_label(data = my_step_df, aes(x=XP, y=Level, label=label)) +
+            geom_label(data = my_labels_df, aes(x=x, y=y, label=label)) +
             labs(
                 title = "Your Place in the Poke-verse",
-                x="Total XP",
+                x="Trainer Total XP",
                 y="Trainer Level"
             ) + ggthemes::theme_few()
         p
