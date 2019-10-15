@@ -57,7 +57,7 @@ server <- function(input, output) {
             return(NULL)
         }
         
-        my_level <- levels %>% filter(Cumulative < my_xp) %>%
+        my_level <- levels %>% filter(Cumulative <= my_xp) %>%
             filter(row_number() == n()) %>% pull(Level)
         
         steps_to_go <- round((max(levels$Cumulative) - my_xp) / my_xp, digits=2)
