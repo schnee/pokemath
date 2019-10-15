@@ -32,7 +32,7 @@ ui <- fluidPage(
                          "Your total XP",
                          0,
                          min = 0,
-                         step = 1000)
+                         step = 1)
         ),
 
         # Show a plot of the generated distribution
@@ -51,7 +51,7 @@ server <- function(input, output) {
         
         my_xp <- if_else(input$the_xp > max(levels$Cumulative),
                          max(levels$Cumulative),
-                         input$the_xp)
+                         as.integer(floor(input$the_xp)))
         
         if(my_xp < 1) {
             return(NULL)
