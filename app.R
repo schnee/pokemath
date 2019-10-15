@@ -32,7 +32,17 @@ ui <- fluidPage(
                          "Your total XP",
                          0,
                          min = 0,
-                         step = 1)
+                         step = 1),
+            hr(),
+            div("Your total XP is found at the bottom of
+                your trainer's section in Pokemon Go. Click
+                on your trainer's avatar, click on 'Me' and
+                then scroll to the bottom."),
+            hr(),
+            div("The arrows across the bottom can be interpreted as:
+                'If everything you've done so far is one step, how
+                many more steps do you need to take to get max XP /
+                max level?'")
         ),
 
         # Show a plot of the generated distribution
