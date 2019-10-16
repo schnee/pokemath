@@ -38,6 +38,10 @@ pred_df <- data.frame(
 my_xp <- if_else(my_xp > max(levels$Cumulative),
                  max(levels$Cumulative),
                  my_xp)
+lvl_start <- levels %>% filter(Cumulative <= my_xp) %>% pull(Cumulative) %>% max()
+lvl_stop <- levels %>% filter(Cumulative >= my_xp) %>% pull(Cumulative) %>% min() -1
+
+lvl_pct <- round(100*(my_xp - lvl_start) / (lvl_stop - lvl_start), digits = 1)
 
 my_level <- levels %>% filter(Cumulative < my_xp) %>%
   filter(row_number() == n()) %>% pull(Level)

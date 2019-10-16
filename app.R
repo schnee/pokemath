@@ -73,9 +73,14 @@ server <- function(input, output) {
         
         steps_to_go <- round((max(levels$Cumulative) - my_xp) / my_xp, digits=2)
         
+        lvl_start <- levels %>% filter(Cumulative <= my_xp) %>% pull(Cumulative) %>% max()
+        lvl_stop <- levels %>% filter(Cumulative >= my_xp) %>% pull(Cumulative) %>% min() -1
+        
+        lvl_pct <- round(100*(my_xp - lvl_start) / (lvl_stop - lvl_start), digits = 1)
+        
         my_df <- tribble(
             ~Level, ~XP, ~label,
-            my_level, my_xp, "You are here"
+            my_level, my_xp, paste0("You are here\n", lvl_pct, "% in level")
         )
         
         my_labels_df <- tribble(
