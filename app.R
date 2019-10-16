@@ -19,13 +19,13 @@ levels <- read_csv(file = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSiqy
                    col_types = "iii")
 
 
-# Define UI for application that draws a histogram
+# Define UI for application that draws the plot
 ui <- fluidPage(
 
     # Application title
     titlePanel("The Poke-verse"),
 
-    # Sidebar with a slider input for number of bins 
+    # Sidebar with a numeric input for the XP level and some text
     sidebarLayout(
         sidebarPanel(
             numericInput("the_xp",
@@ -53,7 +53,7 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic required to draw the plot
 server <- function(input, output) {
 
     output$xpPlot <- renderPlot({
