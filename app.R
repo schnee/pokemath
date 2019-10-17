@@ -80,7 +80,7 @@ server <- function(input, output) {
         
         my_df <- tribble(
             ~Level, ~XP, ~label,
-            my_level, my_xp, paste0("You are here\n", lvl_pct, "% in level")
+            my_level, as.integer(floor(input$the_xp)), paste0("You are here\n", lvl_pct, "% in level")
         )
         
         my_labels_df <- tribble(
