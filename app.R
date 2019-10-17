@@ -23,7 +23,7 @@ levels <- read_csv(file = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSiqy
 ui <- fluidPage(
 
     # Application title
-    titlePanel("The Poke-verse"),
+    titlePanel("The Poke-Verse"),
 
     # Sidebar with a numeric input for the XP level and some text
     sidebarLayout(
